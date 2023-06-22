@@ -18,6 +18,11 @@ class m230617_120739_InitDB extends Migration
             'password' => $this->string(120)->notNull(),
         ]);
 
+        $this->insert('users',[
+            'username' => 'admin',
+            'password' => '$2y$10$kyEq5XFgCG2GXkKVSs3WJOxPw5qDVlNsI0tVnygzI5FZiGYY/PyTK'
+        ]);
+
         $this->createTable('color_dir', [
             'id' => $this->primaryKey(),
             'name' => $this->string(100)->notNull()
