@@ -15,9 +15,10 @@ class ChangePasswordForm extends Model
     {
         return [
             [['oldPassword', 'repeatPassword', 'newPassword'], 'required'],
-            ['oldPassword', 'compare', 'compareAttribute' => 'repeatPassword'],
+            ['repeatPassword', 'compare', 'compareAttribute' => 'oldPassword', 'message' => 'Пароли должны совпадать'],
             ['oldPassword', 'compare', 'compareAttribute' => 'newPassword', 'operator' => '!='],
             ['oldPassword', 'validatePassword'],
+            ['newPassword', 'string', 'length' => [8, 32]]
         ];
     }
 

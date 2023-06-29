@@ -18,5 +18,10 @@ class UserRepository
         return Users::find()->where($where)->all();
     }
 
+    public static function changePassword($userId, $newPassword){
+        $user = self::getUserById($userId);
+        $user->password = password_hash($newPassword, PASSWORD_DEFAULT);
+        $user->save();
+    }
 
 }
