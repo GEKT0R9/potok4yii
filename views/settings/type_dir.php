@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 /** @var ActiveDataProvider $dataProvider */
 
-echo Html::a('Добавить', ['add-color']);
+echo Html::a('Добавить', ['add-type']);
 ?>
 
 <?=
@@ -21,13 +21,13 @@ GridView::widget([
             'buttons' => [
                 'update' => function ($url, $model, $key) {
                     return Html::a('Редактировать', [
-                        'edit-color',
+                        'edit-type',
                         'id' => $key
                     ]);
                 },
                 'delete' => function ($url, $model, $key) {
                     return Html::a('Удалить', [
-                        'delete-color',
+                        'delete-type',
                         'id' => $key
                     ]);
                 },
