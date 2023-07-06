@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 /** @var ActiveDataProvider $dataProvider */
 
-echo Html::a('Добавить', ['add-color']);
+echo Html::a('Добавить', ['add']);
 ?>
 
 <?=
@@ -15,6 +15,7 @@ GridView::widget([
     'columns' => [
         'id',
         'name',
+        'color',
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{update} {delete}',

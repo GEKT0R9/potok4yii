@@ -15,6 +15,14 @@ class DirRepository
         return TypeDir::findOne(['id' => $id]);
     }
 
+    public static function getTypes(){
+        return TypeDir::find()->all();
+    }
+
+    public static function getColors(){
+        return ColorDir::find()->all();
+    }
+
     public static function editColorDir($id, $name){
         $color = ColorDir::findOne(['id' => $id]);
         $color->name = $name;
