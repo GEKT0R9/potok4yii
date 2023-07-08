@@ -2,7 +2,11 @@
 
 /** @var yii\web\View $this */
 
+use app\entity\Flowers;
+
 $this->title = 'My Yii Application';
+$flower = Flowers::find()->one();
+var_dump($flower->color);
 ?>
 <div class="site-index">
 

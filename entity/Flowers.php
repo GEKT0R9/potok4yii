@@ -16,4 +16,14 @@ class Flowers extends ActiveRecord
     {
         return 'flowers';
     }
+
+    public function getColor()
+    {
+        return $this->hasOne(ColorDir::class, ['id' => 'color_id'])->one()->name;
+    }
+
+    public function getType()
+    {
+        return $this->hasOne(TypeDir::class, ['id' => 'type_id'])->one()->name;
+    }
 }

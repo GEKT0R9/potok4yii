@@ -8,7 +8,6 @@ use yii\helpers\Html;
 
 echo Html::a('Добавить', ['add']);
 ?>
-
 <?=
 GridView::widget([
     'dataProvider' => $dataProvider,
@@ -16,19 +15,21 @@ GridView::widget([
         'id',
         'name',
         'color',
+        'type',
+        'price',
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{update} {delete}',
             'buttons' => [
                 'update' => function ($url, $model, $key) {
                     return Html::a('Редактировать', [
-                        'edit-color',
+                        'edit',
                         'id' => $key
                     ]);
                 },
                 'delete' => function ($url, $model, $key) {
                     return Html::a('Удалить', [
-                        'delete-color',
+                        'delete',
                         'id' => $key
                     ]);
                 },

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\entity\Flowers;
 use app\entity\Users;
 use Yii;
 use yii\filters\AccessControl;
