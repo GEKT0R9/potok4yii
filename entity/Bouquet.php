@@ -13,4 +13,11 @@ class Bouquet extends ActiveRecord
     {
         return 'bouquet';
     }
+//
+//    public function getFlowers()
+//    {
+//        return $this->hasMany(FlowersToBouquet::class, ['bouquet_id' => 'id'])
+//            ->leftJoin('flowers', '"flowers-to-bouquet".flower_id = flowers.id');
+//    }
+
 }

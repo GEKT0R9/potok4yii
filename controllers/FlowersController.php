@@ -9,11 +9,36 @@ use app\repository\DirRepository;
 use app\repository\FlowersRepository;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class FlowersController extends Controller
 {
-    public function actionList(){
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['list', 'edit', 'add', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['edit', 'add', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ], [
+                        'actions' => ['list'],
+                        'allow' => true,
+                        'roles' => ['@', '?'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
+
+    public function actionList()
+    {
         $dataProvider = new ActiveDataProvider([
             'query' => Flowers::find()
                 ->select([
@@ -61,12 +86,14 @@ class FlowersController extends Controller
         ]);
     }
 
-    public function actionDelete($id){
+    public function actionDelete($id)
+    {
         FlowersRepository::deleteFlower($id);
         $this->redirect('list');
     }
 
-    public function actionEdit($id){
+    public function actionEdit($id)
+    {
 
         $colors = DirRepository::getColors();
         $colorsArray = [];

@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'defaultRoute' => 'bouquet',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -13,7 +14,6 @@ $config = [
     ],
     'components' => [
         'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'DIkOnfI021EnEAJxJ9a5lvlqkeX_sg0s',
         ],
         'cache' => [
@@ -22,9 +22,10 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'loginUrl' => ['user/login']
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'user/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -48,6 +49,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '/' =>'bouquet/list'
             ],
         ],
 

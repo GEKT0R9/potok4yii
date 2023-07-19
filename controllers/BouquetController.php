@@ -9,10 +9,32 @@ use app\repository\BouquetRepository;
 use app\repository\FlowersRepository;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 
 class BouquetController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['list', 'edit', 'create', 'delete', 'flowers'],
+                'rules' => [
+                    [
+                        'actions' => ['edit', 'create', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ], [
+                        'actions' => ['list', 'flowers'],
+                        'allow' => true,
+                        'roles' => ['@', '?'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     public function actionCreate()
     {
         $flowers = FlowersRepository::getFlowers();

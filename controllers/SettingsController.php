@@ -8,10 +8,39 @@ use app\models\EditAddSettingsForm;
 use app\repository\DirRepository;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class SettingsController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => [
+                    'color-dir', 'type-dir',
+                    'edit-color', 'edit-type',
+                    'add-color', 'add-type',
+                    'delete-color', 'delete-type',
+                ],
+                'rules' => [
+                    [
+                        'actions' =>  [
+                            'color-dir', 'type-dir',
+                            'edit-color', 'edit-type',
+                            'add-color', 'add-type',
+                            'delete-color', 'delete-type',
+                        ],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ]
+                ],
+            ],
+        ];
+    }
+
     public function actionColorDir()
     {
         $dataProvider = new ActiveDataProvider([
