@@ -17,7 +17,9 @@ use yii\bootstrap4\Html;
     <?= $form->field($model, 'price')->input('number') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Добавить') ?>
+        <?= Html::submitButton('Добавить', [
+                'class' => 'btn'
+        ]) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

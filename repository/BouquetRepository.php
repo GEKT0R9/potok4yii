@@ -9,6 +9,11 @@ use app\entity\FlowersToBouquet;
 
 class BouquetRepository
 {
+
+    public static function getBouquetsAsArray(){
+        return Bouquet::find()->asArray()->all();
+    }
+
     public static function addBouquet($name, $flowers_id)
     {
         $bouquet = new Bouquet();

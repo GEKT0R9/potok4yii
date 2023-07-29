@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\api;
 
 use app\entity\Bouquet;
 use app\entity\Flowers;
@@ -10,7 +10,7 @@ use app\repository\FlowersRepository;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
-use yii\web\Controller;
+use yii\rest\Controller;
 
 class BouquetController extends Controller
 {

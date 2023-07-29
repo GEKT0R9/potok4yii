@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace app\controllers\api;
 
 use app\entity\Flowers;
 use app\entity\TypeDir;
@@ -11,7 +11,7 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\Controller;
+use yii\rest\Controller;
 
 class FlowersController extends Controller
 {

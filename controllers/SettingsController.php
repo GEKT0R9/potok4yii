@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use app\entity\ColorDir;
+use app\entity\Files;
 use app\entity\TypeDir;
+use app\models\addFile;
 use app\models\EditAddSettingsForm;
 use app\repository\DirRepository;
 use Yii;
@@ -11,6 +13,7 @@ use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class SettingsController extends Controller
 {
@@ -96,6 +99,37 @@ class SettingsController extends Controller
         ]);
         return $this->render('type_dir', [
             'dataProvider' => $dataProvider
+        ]);
+    }
+
+    public function actionFile($id){
+        $file = Files::find()->where(['id' => $id])->one();
+        return Yii::$app->response->sendStreamAsFile(
+            $file->content,
+            '123.jpg',
+            [
+                'mimeType' => true,
+            ]
+        );
+    }
+
+    public function actionUploadFile()
+    {
+        $model = new addFile();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->file = UploadedFile::getInstance($model, 'file');
+            if ($model->validate()) {
+                $file = new Files();
+                $file->size = $model->file->size;
+                $file->name = $model->file->name;
+                $file->type = $model->file->type;
+                $file->content = file_get_contents($model->file->tempName);
+                $file->save();
+                $this->redirect('/settings/type-dir');
+            }
+        }
+        return $this->render('files',[
+            'model' => $model
         ]);
     }
 

@@ -64,6 +64,74 @@ a.desc:after {
     color: rgba(255, 255, 255, 0.5);
 }
 
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.wrapper{
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.bouquet{
+    width: 20%;
+    padding: 10px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 18px;
+    background: #E4EBF1;
+    box-shadow: 3px 3px 5px #161B1D52;
+}
+.bouquet-img{
+    width: 80%;
+    height: 80dvw;
+}
+.title{
+    font-size: 24px;
+    margin-top: 10px;
+}
+.btns{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.bouquet-btn{
+    /*border: 1px solid rgba(0, 0, 0, 0.75);*/
+    border-radius: 12px;
+    padding: 5px 7px;
+    background: #EFF2F9;
+    box-shadow: 5px 5px 10px #161B1D52, -5px -5px 10px #FAFBFF;
+    transition: .3s linear;
+    color: #6E7F8D;
+    text-decoration: none;
+}
+.bouquet-btn:hover{
+    box-shadow: 10px 10px 20px #161B1D52, -10px -10px 20px #FAFBFF;
+    color: #6E7F8D;
+    text-decoration: none;
+}
+.bouquet-btn:active{
+    box-shadow: 5px 5px 10px #161B1D52 inset, -5px -5px 10px #FAFBFF inset;
+    color: #6E7F8D;
+    text-decoration: none;
+}
+.btn-del{
+    background: #ff6b6b;
+    color: white;
+}
+.btn-del:hover,
+.btn-del:active{
+    color: white;
+}
+
 @media(max-width:767px) {
     .nav li > form > button.logout {
         display:block;

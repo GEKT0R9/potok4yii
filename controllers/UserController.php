@@ -16,7 +16,7 @@ class UserController extends Controller
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => 'yii\rest\ErrorAction',
             ],
         ];
     }

@@ -15,6 +15,21 @@ class FlowersRepository
         return Flowers::find()->all();
     }
 
+    public static function getFlowersAsArray(){
+        return Flowers::find()
+            ->select([
+                'flowers.id',
+                'flowers.name',
+                'color_dir.name AS color',
+                'type_dir.name AS type',
+                'flowers.price'
+            ])
+            ->leftJoin('color_dir', 'flowers.color_id = color_dir.id')
+            ->leftJoin('type_dir', 'flowers.type_id = type_dir.id')
+            ->asArray()
+            ->all();
+    }
+
     public static function addFlower($name, $color_id, $type_id, $price)
     {
         $flower = new Flowers();

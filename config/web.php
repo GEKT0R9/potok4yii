@@ -15,6 +15,9 @@ $config = [
     'components' => [
         'request' => [
             'cookieValidationKey' => 'DIkOnfI021EnEAJxJ9a5lvlqkeX_sg0s',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -26,13 +29,6 @@ $config = [
         ],
         'errorHandler' => [
             'errorAction' => 'user/error',
-        ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -49,7 +45,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '/' =>'bouquet/list'
+                '/' =>'bouquet/list',
             ],
         ],
 

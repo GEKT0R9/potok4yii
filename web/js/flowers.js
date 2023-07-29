@@ -5,6 +5,7 @@ let flowersDiv = document.getElementById('flowers');
 
 
 count.addEventListener('change', () => {
+    getData();
     if (count.value !== oldCount) {
         let query = document.querySelectorAll('.field-editaddbouquetform-flowers');
         for (const queryElement of query) {
@@ -16,4 +17,22 @@ count.addEventListener('change', () => {
     }
     oldCount = count.value;
 });
+
+async function uploadData() {
+    let response = await fetch('/api/settings/add-color', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body:JSON.stringify({
+            name: 'John'
+        })
+    });
+    console.log(response.json());
+}
+
+async function getData() {
+    let response = await fetch('/api/settings/color-dir');
+    console.log(response.json());
+}
 
